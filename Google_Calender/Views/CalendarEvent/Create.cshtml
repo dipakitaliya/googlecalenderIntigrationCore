@@ -1,0 +1,138 @@
+﻿@model  Google_Calender.Models.CalendarEvent
+@{
+    ViewBag.Title = "Create Event";
+}
+    <style>
+        .justify-content-center {
+            -webkit-box-pack: center !important;
+            -ms-flex-pack: center !important;
+            justify-content: center !important;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .billing-form .form-control {
+            font-weight: 300;
+            border: transparent !important;
+            border: 1px solid rgba(0, 0, 0, 0.1) !important;
+            height: 58px !important;
+            padding-left: 15px;
+            padding-right: 15px;
+            background: transparent !important;
+            color: rgba(0, 0, 0, 0.4) !important;
+            font-size: 14px;
+            border-radius: 0px;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 80px;
+            font-size: 20px;
+            border-radius: 41px;
+            font-weight: normal;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 30px;
+        }
+
+            .btn.btn-primary {
+                background: #ffa45c;
+                border: 1px solid #ffa45c;
+                color: #fff;
+            }
+
+        body {
+            font-family: "Open Sans", Arial, sans-serif;
+            background: #fff;
+            font-size: 15px;
+            line-height: 1.8;
+            font-weight: 400;
+            color: gray;
+        }
+
+        .cart-detail .btn-primary {
+            display: block;
+            width: 109%;
+        }
+    </style>
+@using (Html.BeginForm("Create", "CalendarEvent", FormMethod.Post))
+{
+   
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 ftco-animate">
+                    <form action="#" class="billing-form" method="post">
+                        <h3 class="mb-4 billing-heading" style="text-align:center">Create a new event</h3>
+                        <div class="row align-items-end" style="margin-left: -180px">
+                            <div class="col-md-6" style="margin-left: 430px;">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="CalendarId">CalendarId</label>
+                                        @Html.TextBoxFor(a => a.CalendarId, htmlAttributes: new { @class = "form-control" })
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Title">Title</label>
+                                        @Html.TextBoxFor(a => a.Title, htmlAttributes: new { @class = "form-control", @required = "required" })
+                                        <span style="color:red"> @Html.ValidationMessageFor(m => m.Title)</span>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Location">Location</label>
+                                        @Html.TextBoxFor(a => a.Location, htmlAttributes: new { @class = "form-control", @required = "required" })
+                                        <span style="color:red"> @Html.ValidationMessageFor(m => m.Location)</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Description"> Description</label>
+                                        @Html.TextAreaFor(a => a.Description, htmlAttributes: new { @class = "form-control", @required = "required" })
+                                        <span style="color:red"> @Html.ValidationMessageFor(m => m.Description)</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="mobileno"> StartDate</label>
+                                        @Html.TextBoxFor(a => a.StartDate, htmlAttributes: new { @type = "date", @Value = Model.StartDate.ToString("yyyy-MM-dd"), @class = "form-control" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="mobileno"> EndDate</label>
+                                        @Html.TextBoxFor(a => a.EndDate, htmlAttributes: new { @type = "date", @Value = Model.EndDate.ToString("yyyy-MM-dd"), @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="mobileno"> Color</label>
+                                        @Html.DropDownList("ColorId", (SelectList)ViewBag.Colors, new { @class = "form-control" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" value="Submit" id="btnValidate" class="btn btn-primary py-3 px-5">
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form><!-- END -->
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

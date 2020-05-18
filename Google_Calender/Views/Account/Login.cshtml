@@ -1,0 +1,97 @@
+﻿@model  Google_Calender.Models.Comman.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+
+@*<section id="loginForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </li>
+                <li>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </li>
+            </ol>
+            <input type="submit" value="Log in" />
+        </fieldset>
+        <p>
+            @Html.ActionLink("Register", "Register") if you don't have an account.
+        </p>
+    }
+</section>*@
+<!DOCTYPE html>
+<style>
+
+    .col-md-4 {
+        width: 27.333333%;
+        margin-left: 35%;
+        border: 40% solid;
+        border: 19px solid #dcc2c2;
+        margin-top: 10%;
+    }
+</style>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <title>Login</title>
+</head>
+<body>
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="row">
+            <div class="col-md-4">
+                <form>
+                    <div class="text-danger"></div>
+                    <div class="form-group">
+                        <h2 style="font-family:'Times New Roman', Times, serif;font-weight:bold;text-align-last:center">
+                            User Login
+                        </h2>
+                        <hr />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Email</label>
+                        @Html.TextBoxFor(m => m.UserName ,new { @class="form-control" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                      
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Password</label>
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control",@type="password" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                    <div class="form-group">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-success " style="position: absolute; right: 185px;" />
+
+                    </div>
+
+                </form>
+                <br />
+                <br />
+                <div class="form-group"><b>Don't have an account?</b>  <a href="~/Register/Register"><u> Register Now</u></a></div>
+                <br />
+
+            </div>
+        </div>
+    }
+</body>
+
+</html>
